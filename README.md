@@ -26,11 +26,18 @@ if you want to update your code
 zappa update dev
 ```
 ## Display website
+![alt text](https://github.com/margaretpell/Serverless_Computing_Project/blob/main/images/Screenshot%202023-04-12%20at%203.07.45%20PM.png)
 1. authentication
+![alt text](https://github.com/margaretpell/Serverless_Computing_Project/blob/main/images/Screenshot%202023-04-12%20at%203.07.54%20PM.png)
 2. upload
+![alt text](https://github.com/margaretpell/Serverless_Computing_Project/blob/main/images/Screenshot%202023-04-12%20at%203.08.26%20PM.png)
 3. search
+![alt text](https://github.com/margaretpell/Serverless_Computing_Project/blob/main/images/Screenshot%202023-04-12%20at%203.08.34%20PM.png)
+![alt text](https://github.com/margaretpell/Serverless_Computing_Project/blob/main/images/Screenshot%202023-04-12%20at%203.10.06%20PM.png)
 4. all keys
+![alt text](https://github.com/margaretpell/Serverless_Computing_Project/blob/main/images/Screenshot%202023-04-12%20at%203.09.29%20PM.png)
 5. all posts
+![alt text](https://github.com/margaretpell/Serverless_Computing_Project/blob/main/images/Screenshot%202023-04-12%20at%203.09.21%20PM.png)
 
 
 

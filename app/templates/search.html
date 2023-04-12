@@ -1,0 +1,53 @@
+<style>
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  background-color: #fff;
+}
+
+#search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#key-input {
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 250px;
+  background-color: #f2f2f2;
+}
+
+.search-button {
+  background-color: #555;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-left: 10px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+}
+
+.search-button:hover {
+  background-color: #444;
+}
+</style>
+{% extends 'base.html' %}
+
+{% block sub_content %}
+   <h2 style="text-align: center; font-size: 32px; font-family: Georgia, serif; color: #2c3e50; margin-bottom: 30px;">Search for a post using a Key</h2>
+<div class="search-container">
+    <form id="search-form" action="{{ url_for('main.search') }}" method="post" enctype="multipart/form-data">
+        <input type="text" id="key-input" name="key" placeholder="Enter key">
+        <button type="submit" class="search-button">Search</button>
+    </form>
+</div>
+
+{% endblock %}

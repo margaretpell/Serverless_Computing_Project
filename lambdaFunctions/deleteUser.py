@@ -1,0 +1,69 @@
+import boto3
+import json
+import datetime
+from collections.abc import Mapping
+from boto3.dynamodb.conditions import Key
+
+bucket = 'ece1779a3bucket1'
+dynamodb = boto3.resource('dynamodb')
+s3_client = boto3.client('s3')
+s3_resource = boto3.resource('s3')
+
+
+def deleteUser(key):
+    try:
+        table = dynamodb.Table('Users')
+        response = table.get_item(
+            Key={'Username': key}
+        )
+        item = response.get('Item')
+
+        if item:
+            table.delete_item(Key={'Username': key})
+            return True
+        return False
+    except Exception as e:
+        return False
+
+
+def lambda_handler(event, context):
+    try:
+        print("event:", event)
+
+        if 'queryStringParameters' in event and event['queryStringParameters'] != None:
+            event = event["queryStringParameters"]
+        else:
+            if isinstance(event["body"], Mapping):
+                event = event["body"]
+            else:
+                event = json.loads(event["body"])
+
+        print("event after processing:", event)
+
+        sc = None  # Status code
+        result = ""  # Response payload
+
+        if "key" in event:
+            result = deleteUser(event["key"])
+            if result:
+                sc = 200
+                result = {
+                    "success": True,
+                    "message": f"post with {event['key']} has been delete",
+                }
+            else:
+                result = {
+                    "success": False,
+                    "message": f"Fail to delete post with {event['key']}",
+                }
+        response = {
+            'statusCode': sc,
+            'headers': {"Content-type": "application/json"},
+            'body': json.dumps(result)
+        }
+
+        print("response:", response)
+        return response
+    except Exception as e:
+        print("Error:", str(e))
+        return "Error:" + str(e)

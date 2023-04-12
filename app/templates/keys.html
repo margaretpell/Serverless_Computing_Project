@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+    {% block sub_content %}
+
+
+{% if posts %}
+    <h2 style="text-align: center; font-size: 32px; font-family: Georgia, serif; color: #2c3e50; margin-bottom: 30px;">Show all the keys from the posts</h2>
+<table class="table table-bordered table-striped" style="max-width: 500px; margin: 0 auto; ">
+    <thead class="thead-dark">
+        <tr>
+            <th style="text-align: center;">Key List</th>
+            <th style="text-align: center;">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+        <tr>
+            <td style="text-align: center;">{{post.Key}}</td>
+            <td style="text-align: center;">{{post.Description}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    {% else %}
+    <h2 style="text-align: center; font-size: 32px; font-family: Georgia, serif; color: #2c3e50; margin-bottom: 30px;">No posts</h2>
+{% endif %}
+
+
+
+  {% endblock %}

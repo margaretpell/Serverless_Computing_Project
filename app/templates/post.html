@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+{% if post %}
+    <h2 style="text-align: center; font-size: 32px; font-family: Georgia, serif; color: #2c3e50; margin-bottom: 30px;">This is the searching result</h2><div class="row justify-content-center">
+    <div class="card mb-4 box-shadow">
+      <p style="text-align:center;"><img class="center" src="{{ "data:image/png;base64, " + post['Image'] }}" alt="" style="max-width:40%;">
+      <div class="card-body text-center">
+        <p class="card-text">{{ post.Description }}</p>
+        <p class="card-text"><small class="text-muted">Shared by: {{ post.Username }}</small></p>
+        <p class="card-text"><small class="text-muted">Key id: {{ post.Key }}</small></p>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+{% endblock %}

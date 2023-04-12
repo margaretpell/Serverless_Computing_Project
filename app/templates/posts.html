@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if posts %}
+  <div class="row">
+    {% for post in posts %}
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <img class="card-img-top" src="{{ "data:image/png;base64, " + post['Image'] }}" alt="" style="max-width:100%;">
+          <div class="card-body">
+            <p class="card-text">{{ post.Description }}</p>
+            <p class="card-text"><small class="text-muted">Shared by: {{ post.Username }}</small></p>
+              <p class="card-text"><small class="text-muted">Key id: {{ post.Key }}</small></p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<style>
+    .delete-button {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        text-align: center;
+        padding: 5px;
+        font-size: 16px;
+    }
+
+    .delete-button button {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 3px;
+        font-size: 16px;
+    }
+</style>
+
+    {% if user.username == 'admin' %}
+<div class="delete-button">
+    <form action="{{ url_for('main.delete_all') }}" method="post">
+        <button name="delete_button">Delete All Posts</button>
+    </form>
+</div>
+{% endif %}
+
+{% endblock %}

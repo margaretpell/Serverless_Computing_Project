@@ -81,38 +81,7 @@ try:
 except Exception as e:
     webapp.logger.error(e)
 
-try:
-    posttable = dynamodb.create_table(
-        TableName='Favourite',
-        KeySchema=[
-            {
-                'AttributeName': 'Key',
-                'KeyType': 'HASH'
-            },
-            {
-                'AttributeName': 'Username',
-                'KeyType': 'RANGE'
-            }
-        ],
-        AttributeDefinitions=[
-            {
-                'AttributeName': 'Key',
-                'AttributeType': 'S'
-            },
-            {
-                'AttributeName': 'Username',
-                'AttributeType': 'S'
-            }
-        ],
-        ProvisionedThroughput={
-            'ReadCapacityUnits': 5,
-            'WriteCapacityUnits': 5
-        }
-    )
-    # Wait until the table exists.
-    posttable.meta.client.get_waiter('table_exists').wait(TableName='Favourite')
-except Exception as e:
-    webapp.logger.error(e)
+
 
 from app.main import main
 

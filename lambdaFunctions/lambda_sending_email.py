@@ -26,7 +26,7 @@ def lambda_handler(event, context):
 
         # Send a welcome message to the user's email address using Amazon SES
         response = ses_client.send_email(
-            Source='margaretcpe@gmail.com',
+            Source='',
             Destination={
                 'ToAddresses': [email]
             },
